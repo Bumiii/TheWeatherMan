@@ -22,13 +22,14 @@ module.exports = {
                     { name: 'Any Bug or Errors?', value: "Please message the dev if you have any questions or if there is a bug you want to report, Bumi#0907", inline: true },
 
                 )
-                .setFooter('Have a great day!')
+                .setFooter(`To look at all of my commands type 'w!help list'\nHave a great day!`)
                 .setTimestamp()
             message.channel.send(embed);
             console.log("Command Executed");
         } else {
             if (text == 'list') {
                 const embed = new discord.MessageEmbed()
+                    .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ format: "png", dynamic: true })}`)
                     .setColor('#6eb9ff')
                     .setTitle('List of Commands:')
                     .setDescription(`${prefix}` + commands.map(c => c.name).join(`\n${prefix}`))
@@ -48,6 +49,7 @@ module.exports = {
 
                 if (cmd.aliases) {
                     const embed = new discord.MessageEmbed()
+                        .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ format: "png", dynamic: true })}`)
                         .setColor('#039154')
                         .setTitle(`**Command Name:** ${cmd.name}`)
                         .setDescription(`**Description:** ${cmd.description}\n**Aliases: ${cmd.aliases}\n**`)
@@ -57,6 +59,7 @@ module.exports = {
                 } else {
                     if (cmd.description) {
                         const embed = new discord.MessageEmbed()
+                            .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ format: "png", dynamic: true })}`)
                             .setColor('#039154')
                             .setTitle(`**Command Name:** ${cmd.name}`)
                             .setDescription(`**Description:** ${cmd.description}\n`)
